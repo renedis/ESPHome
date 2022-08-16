@@ -1,5 +1,5 @@
 esphome:
-  name: tubeszb-cc2652-poe-2022
+  name: esp-dsmr-cc2652-poe
   platform: ESP32
   board: esp-wrover-kit
   on_boot:
