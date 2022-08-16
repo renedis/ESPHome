@@ -1,0 +1,64 @@
+esphome:
+  name: "esp-woonkamer-vloerverwarming"
+
+esp8266:
+  board: esp01_1m
+
+wifi:
+  ssid: ""
+  password: ""
+
+  manual_ip:
+    static_ip: x.x.x.233
+    gateway:
+    subnet: 255.255.255.0
+    dns1:
+    
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "esp-woonkamer-vv-hotspot"
+    password: ""
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+#api:
+
+ota:
+
+mqtt:
+  broker: 10.0.5.7
+  username: 
+  password:
+  client_id: esp-woonkamer-vv
+  discovery: true
+  discovery_retain: true
+
+dallas:
+  - pin: GPIO14
+
+sensor:
+  - platform: dallas
+    address: 0x800417c3fe20ff28
+    name: "woonkamer-vv-retour-1"
+  - platform: dallas
+    address: 0x240417c35472ff28
+    name: "woonkamer-vv-retour-2"
+  - platform: dallas
+    address: 0x2f0417c4203aff28
+    name: "woonkamer-vv-retour-3"
+  - platform: dallas
+    address: 0x9b0417c3fdf1ff28
+    name: "woonkamer-vv-retour-4"
+  - platform: dallas
+    address: 0x400417c3d105ff28
+    name: "woonkamer-vv-retour-5"
+  - platform: dallas
+    address: 0x810417c3faf7ff28
+    name: "woonkamer-vv-retour-main"
+  - platform: dallas
+    address: 0x430517c45875ff28
+    name: "woonkamer-vv-aanvoer-main"
