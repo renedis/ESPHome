@@ -1,0 +1,73 @@
+esphome:
+  name: "esp-zolder"
+  platform: ESP32
+  board: nodemcu-32s
+
+wifi:
+  ssid: ""
+  password: ""
+
+  manual_ip:
+    static_ip: x.x.x.231
+    gateway:
+    subnet: 255.255.255.0
+    dns1:
+    
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "esp-zolder Fallback Hotspot"
+    password: ""
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+mqtt:
+  broker: 10.0.5.7
+  username:
+  password:
+  client_id: esp-zolder
+  discovery: true
+  discovery_retain: true
+  
+esp32_ble_tracker:
+
+sensor:
+  - platform: xiaomi_lywsdcgq
+    mac_address: 4C:65:A8:D3:EB:73
+    temperature:
+      name: "Xiaomi Thermostaat 1 Temperatuur"
+    humidity:
+      name: "Xiaomi Thermostaat 1 Luchtvochtigheid"
+    battery_level:
+      name: "Xiaomi Thermostaat 1 Batterijniveau"
+  - platform: xiaomi_lywsdcgq
+    mac_address: 4C:65:A8:D3:EB:4A
+    temperature:
+      name: "Xiaomi Thermostaat 2 Temperatuur"
+    humidity:
+      name: "Xiaomi Thermostaat 2 Luchtvochtigheid"
+    battery_level:
+      name: "Xiaomi Thermostaat 2 Batterijniveau"
+  - platform: xiaomi_lywsdcgq
+    mac_address: 4C:65:A8:D3:E6:A8
+    temperature:
+      name: "Xiaomi Thermostaat 3 Temperatuur"
+    humidity:
+      name: "Xiaomi Thermostaat 3 Luchtvochtigheid"
+    battery_level:
+      name: "Xiaomi Thermostaat 3 Batterijniveau"
+  - platform: xiaomi_lywsdcgq
+    mac_address: 4C:65:A8:D2:27:81
+    temperature:
+      name: "Xiaomi Thermostaat 4 Temperatuur"
+    humidity:
+      name: "Xiaomi Thermostaat 4 Luchtvochtigheid"
+    battery_level:
+      name: "Xiaomi Thermostaat 4 Batterijniveau"
