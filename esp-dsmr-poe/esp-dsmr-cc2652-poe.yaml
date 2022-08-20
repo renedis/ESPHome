@@ -5,13 +5,13 @@ esphome:
     then:
       - switch.turn_on: zRST_gpio
 
-
 esp32:
   board: esp32-poe-iso
   framework:
     type: arduino
 
-#captive_portal:
+external_components:
+  - source: github://oxan/esphome-stream-server
 
 ethernet:
   type: LAN8720
@@ -175,21 +175,10 @@ switch:
     turn_off_action:
       - switch.toggle: zRST_gpio
 
-#serial_server:
-#  port: 6638
-#  multi_client: false 
-  
-#binary_sensor:
-#  - platform: serial_server
-#    name: Serial Connected
-    
-#zeroconf:
-#  - service: tubeszb
-#    protocol: tcp
-#    port: 6638
-#    txt:
-#      version: 1.0
-#      port: 6638
-#      radio_type: znp
-#      baud_rate: 115200
-#      data_flow_control: software
+stream_server:
+   uart_id: uart_zigbee
+   port: 6638
+
+binary_sensor:
+  - platform: serial_server
+    name: Zigbee Serial Connected
